@@ -43,6 +43,18 @@ class Professor(Person):
    def getprofessorinfo(self):
        return f"{self.getdetails()},proid is:{self.__proid},dpt name is:{self.__dptname}"
 
+class Administration (Person):
+   def __init__(self,name,age,admid,dptname):
+       super().__init__(name,age)
+       self.__admid=admid
+       self.__dptname=dptname
+   def get_role(self):
+       return "Administration"
+
+
+   def getadministrationinfo(self):
+       return f"{self.getdetails()},admid is:{self.__admid},dpt name is:{self.__dptname}"
+
 
 #university class:
 
@@ -84,8 +96,9 @@ print(u.welcomemessage())
 while True:
    print("press 1 for Student registration")
    print("press 2 for professor registration")
-   print("press 3 for display registered people")
-   print("press 4 for exit")
+   print("press 3 for administration registration")
+   print("press 4 for display registered people")
+   print("press 5 for exit")
    ch=int(input("enter your choice:"))
    if ch==1:
        name=input("enter your name:")
@@ -104,10 +117,19 @@ while True:
        u.addpeople(p)
        print("Professor registered successfully")
    elif ch==3:
+      name=input("enter your name:")
+      age = int(input("enter your age:"))
+      admid = int(input("enter your id:"))
+      deptname = input("enter your dpt name")
+      a = Administration(name, age,admid,deptname)
+      u.addpeople(a)
+      print("Administration registered successfully")
+   elif ch==4:
        print("registered people info:")
        u.displaypeople()
-   elif ch==4:
+   elif ch==5:
        print("Thank you for using this application")
        break
    else:
        print("invalid option")
+
